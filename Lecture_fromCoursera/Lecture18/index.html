@@ -12,8 +12,10 @@
     <div ng-controller='ShoppingListController'>
       <!-- Searchable Shopping List: -->
       <h3>Shopping List:</h3>
+      <!--create an ng-model with property search, filters on the fly-->
       <input type="text" ng-model="search">
       <ul>
+        <!--creates a search filter-->
         <li ng-repeat="item in shoppingList | filter : search">{{ item }}</li>
       </ul>
     </div>

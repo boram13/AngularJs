@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app='ShoppingListApp'>
+  <head>
+    <meta charset="utf-8">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <style> body { font-size: 1.2em; }</style>
+    <title>Custom Service</title>
+  </head>
+  <body>
+    <h1>Custom Service</h1>
+    
+    <!--we have broke our code in two separate controllers, this 
+        controller is going to let us add items to our shopping list.-->
+    <div ng-controller='ShoppingListAddController as itemAdder'>
+      <input type="text" ng-model="itemAdder.itemName" placeholder="item name">
+      <input type="text" ng-model="itemAdder.itemQuantity" placeholder="quantity">
+      
+    <!--place it into some data structure-->
+      <button ng-click="itemAdder.addItem();">Add Item To Shopping List</button>
+    </div>
+
+    <!--it's a collection, probably an array. And we're looping over those items and every 
+        time through the loop we're saying I want to list the item.quantity of item.name-->
+    <div ng-controller='ShoppingListShowController as showList'>
+      <ol>
+        <li ng-repeat="item in showList.items">
+          {{ item.quantity }} of {{ item.name }}
+          <!--this makes sure that remove function is invoked-->
+          <button ng-click="showList.removeItem($index);">Remove Item</button>
+        </li>
+      </ol>
+    </div>
+  </body>
+</html>

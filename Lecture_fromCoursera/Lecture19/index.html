@@ -9,11 +9,16 @@
   </head>
   <body>
     <h1>Controller As Syntax</h1>
+
+    <!--use the controller as we usually used it without the controller as syntax.But
+        we'll play around with the prototype inheritance between the nested controllers
+        child controller is nested inside parent controller-->
     <div ng-controller='ParentController1'>
       <div ng-controller='ChildController1'>
       </div>
     </div>
 
+    <!--controller as syntax-->
     <div ng-controller='ParentController2 as parent'>
       Parent value: {{ parent.value }}
 
