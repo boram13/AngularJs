@@ -2,6 +2,7 @@
     'use strict';
     
     angular.module('ShoppingListPromiseApp', [])
+    //caller and controller
     .controller('ShoppingListController', ShoppingListController)
     .service('ShoppingListService', ShoppingListService)
     .service('WeightLossFilterService', WeightLossFilterService);
@@ -24,7 +25,7 @@
       };
     }
     
-    
+    //weightLossFilterService is a filter as an argument inside inject
     ShoppingListService.$inject = ['$q', 'WeightLossFilterService'];
     function ShoppingListService($q, WeightLossFilterService) {
       var service = this;
@@ -33,9 +34,11 @@
       var items = [];
     
       // service.addItem = function (name, quantity) {
+         //asynchronyze behaviour, we callback the function to identify
       //   var promise = WeightLossFilterService.checkName(name);
       //
       //   promise.then(function (response) {
+        //callback again
       //     var nextPromise = WeightLossFilterService.checkQuantity(quantity);
       //
       //     nextPromise.then(function (result) {
@@ -52,7 +55,7 @@
       //   });
       // };
     
-    
+    ////this is more easier code 
       // service.addItem = function (name, quantity) {
       //   var promise = WeightLossFilterService.checkName(name);
       //
@@ -66,17 +69,17 @@
       //       quantity: quantity
       //     };
       //     items.push(item);
-      //   })
+      //   })//is executed when reject is envoked
       //   .catch(function (errorResponse) {
       //     console.log(errorResponse.message);
       //   });
       // };
     
-    
+      //this makes the two things in paralel, capture the item and the quantity
       service.addItem = function (name, quantity) {
         var namePromise = WeightLossFilterService.checkName(name);
         var quantityPromise = WeightLossFilterService.checkQuantity(quantity);
-    
+      //with the $q.all we are able to execute multiple promises
         $q.all([namePromise, quantityPromise]).
         then(function (response) {
           var item = {
@@ -103,14 +106,16 @@
     WeightLossFilterService.$inject = ['$q', '$timeout'];
     function WeightLossFilterService($q, $timeout) {
       var service = this;
-    
+
+    //the checkName method first acquires our deferred objectedthat contains the
+    //environment for th eentire asynchronize behaviour and sets up this result with a msg
       service.checkName = function (name) {
         var deferred = $q.defer();
     
         var result = {
           message: ""
         };
-    
+        //will simulate our asynchronyze behaviour
         $timeout(function () {
           // Check for cookies
           if (name.toLowerCase().indexOf('cookie') === -1) {
@@ -121,7 +126,7 @@
             deferred.reject(result);
           }
         }, 3000);
-    
+        //this tells us if there is going to be an resolution or a reject message
         return deferred.promise;
       };
     
