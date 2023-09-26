@@ -5,12 +5,18 @@
     .controller('ShoppingListController1', ShoppingListController1)
     .controller('ShoppingListController2', ShoppingListController2)
     .factory('ShoppingListFactory', ShoppingListFactory)
+    //here we create a directive
     .directive('shoppingList', ShoppingList);
     
     
     function ShoppingList() {
+      //we gonna have a ddo object, where we gonna setup the framework
       var ddo = {
+
+        //we create a template which have a path
         templateUrl: 'shoppingList.html',
+        //here we gonna a create a isolate scope with a direct property
+        //bound to smth called muList
         scope: {
           list: '=myList',
           title: '@title'

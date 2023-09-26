@@ -1,0 +1,24 @@
+body {
+    font-size: 1.2em;
+  }
+  
+  .error {
+    color: red;
+    font-weight: bold;
+    display: none;
+  }
+  /*to have to lists side by side we gonna float both of them to the left*/
+  #list1, #list2 {
+    float: left;
+  }
+  /*then we will have a margin left to the list two to separate them a little bit */
+  #list2 {
+    margin-left: 20px;
+  }
+  
+  .warning {
+    font-style: italic;
+  }
+  .title {
+    background-color: #383838;
+  }

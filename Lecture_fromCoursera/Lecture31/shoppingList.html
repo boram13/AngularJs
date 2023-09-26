@@ -1,0 +1,10 @@
+<h3>Title: {{ list.myTitle }}</h3>
+<ol>
+  <li ng-repeat="item in list.items">
+    {{ item.quantity }} of {{ item.name }}
+    <button ng-click="list.onRemove({index: $index});">Remove Item</button>
+  </li>
+</ol>
+<!--here we are going to create a tag for a error placeholder ,with the 
+display in css will make this dic invisible -->
+<div class="error">OH THE HORROR! COOKIES DETECTED!</div>

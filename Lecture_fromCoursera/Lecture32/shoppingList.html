@@ -1,0 +1,10 @@
+<h3>Title: {{ list.myTitle }}</h3>
+<ol>
+  <li ng-repeat="item in list.items">
+    {{ item.quantity }} of {{ item.name }}
+    <button ng-click="list.onRemove({index: $index});">Remove Item</button>
+  </li>
+</ol>
+<!--this means that when the content of the parents is going to get evaluated 
+is going to get inserted right here as the body of this div -->
+<div class="error" ng-transclude></div>

@@ -11,11 +11,12 @@
     <h1>Directives with Isolate Scope</h1>
 
     <!-- LIST #1 - unlimited items -->
+    <!--we have two controllers and both are marked as list in the controller as syntax-->
     <div id="list1" ng-controller='ShoppingListController1 as list1'>
       <input type="text" ng-model="list1.itemName" placeholder="item name">
       <input type="text" ng-model="list1.itemQuantity" placeholder="quantity">
       <button ng-click="list1.addItem();">Add Item</button>
-
+    <!--here we cretae a tag with denormalized my-list,then we are going to specify the title-->
       <shopping-list my-list="list1" title="{{list1.title}}"></shopping-list>
       <div ng-if="list1.errorMessage" class="error">Error: {{list1.errorMessage}}</div>
     </div>
