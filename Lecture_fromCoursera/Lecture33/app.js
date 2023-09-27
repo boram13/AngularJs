@@ -5,18 +5,24 @@
     .controller('ShoppingListController', ShoppingListController)
     .factory('ShoppingListFactory', ShoppingListFactory)
     .component('shoppingList', {
+      //first we gonna change the direnctive to a component object
       templateUrl: 'shoppingList.html',
       controller: ShoppingListComponentController,
       bindings: {
         items: '<',
         myTitle: '@title',
-        onRemove: '&'
+        onRemove: '&' //this is gonna a be a callback to the parent controller 
       }
     });
     
+
+    //we need to define our shopping list component controller 
     ShoppingListComponentController.$inject = ['$element']
     function ShoppingListComponentController($element) {
-      var $ctrl = this;
+      var $ctrl = this; 
+      
+      //ctr is just a local variable witha whatever name 
+      //but should be named same as in template.html
       var totalItems;
     
       $ctrl.cookiesInList = function () {
@@ -30,6 +36,7 @@
         return false;
       };
     
+      //index is what will be passed  in from the template
       $ctrl.remove = function (myIndex) {
         $ctrl.onRemove({ index: myIndex });
       };

@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html ng-app='ShoppingListComponentApp'>
+<!--here we gonna kick off a bunch of asynchronous actions  and each of them
+will check if a list contains the word cookie or not, also while this is being checked
+we want to show some indication to the users what is going on  -->
+<html ng-app='ShoppingListEventsApp'>
   <head>
     <meta charset="utf-8">
     <script src="jquery-3.1.0.min.js"></script>
     <script src="angular.min.js"></script>
     <script src="app.js"></script>
     <link rel="stylesheet" href="styles.css">
-    <title>Shopping List With Components</title>
+    <title>Shopping List With Events</title>
   </head>
   <body>
-    <h1>Shopping List With Components</h1>
-
+    <h1>Shopping List With Events:</h1>
     <div id="list" ng-controller='ShoppingListController as list'>
       <input type="text" ng-model="list.itemName" placeholder="item name">
       <input type="text" ng-model="list.itemQuantity" placeholder="quantity">
@@ -23,7 +25,8 @@
         on-remove="list.removeItem(index)"></shopping-list>
 
     </div>
-
-    </div>
+    <!-- here we gonna place a loading spinner component  and it will be placed 
+    outaide of our controller, but inside of angular application-->
+    <loading-spinner></loading-spinner>
   </body>
 </html>

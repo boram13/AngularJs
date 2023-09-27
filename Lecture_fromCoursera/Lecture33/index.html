@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app='ShoppingListComponentApp'>
+  <head>
+    <meta charset="utf-8">
+    <!--after we have download jquerry we have to implement it here t get ready libraries-->
+    <script src="jquery-3.1.0.min.js"></script>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Shopping List With Components</title>
+  </head>
+  <body>
+    <h1>Shopping List With Components</h1>
+
+    <div id="list" ng-controller='ShoppingListController as list'>
+      <input type="text" ng-model="list.itemName" placeholder="item name">
+      <input type="text" ng-model="list.itemQuantity" placeholder="quantity">
+      <button ng-click="list.addItem();">Add Item</button>
+      <span>{{ list.lastRemoved }}</span>
+
+      <!--things get remove from shopping st by using this directive 
+      we are turning this shopping list in a component,index will be the output from the component directive -->
+      <shopping-list
+        items="list.items"
+        title="{{list.title}}"
+        on-remove="list.removeItem(index)"></shopping-list>
+
+    </div>
+
+    </div>
+  </body>
+</html>
