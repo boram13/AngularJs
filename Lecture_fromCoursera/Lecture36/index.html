@@ -8,10 +8,15 @@
   <body>
     <h1>Intro to ui-router</h1>
 
+    <!--here we gona have two tabs which shows the table one and table two-->
     <div class="tabs">
+
+      <!--active part specifies an active css class-->
       <a ui-sref="tab1" ui-sref-active="activeTab">Tab 1</a>
       <a ui-sref="tab2" ui-sref-active="activeTab">Tab 2</a>
-      <!-- <button ui-sref="tab2">Tab 2</button> -->
+      
+      <!-- <button ui-sref="tab2">Tab 2</button> -
+        this button will include the state transition-->
     </div>
 
     <ui-view></ui-view>
