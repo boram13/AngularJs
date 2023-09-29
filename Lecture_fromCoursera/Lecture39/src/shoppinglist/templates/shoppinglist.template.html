@@ -1,0 +1,8 @@
+<ul>
+  <li ng-repeat="item in $ctrl.items"
+      ui-sref="itemDetail({itemId: $index})">
+    {{ item.quantity }} of {{ item.name }}
+  </li>
+</ul>
+<!--ui-sref makes the items clickable, name of our state and invoke it as an function with an object 
+index will specify which item will be iterrated  -->
